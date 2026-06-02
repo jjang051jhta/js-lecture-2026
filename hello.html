@@ -10,6 +10,7 @@
       <input type="password" id="userId" name="userId" />
       <button type="button" id="btn">전송</button>
     </form>
+    <button class="btn">버튼</button>
 
     <script>
       let a = 1;
@@ -38,10 +39,19 @@
       // btn.addEventListener("click", function () {
       //   console.log(userId.value);
       // });
+      console.log("1" === 1);
       btn.addEventListener("click", () => {
         //console.log(userId.value);
-        userId.type = "text";
+        if (userId.type === "password") {
+          userId.type = "text";
+          btn.innerHTML = "비밀번호 숨기기";
+        } else {
+          userId.type = "password";
+          btn.innerHTML = "비밀번호 보이게 해줘";
+        }
       });
+      const btn02 = document.querySelector(".btn");
+      btn02.addEventListener("click", showName); //callback
     </script>
   </body>
 </html>

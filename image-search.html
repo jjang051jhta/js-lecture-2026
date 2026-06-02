@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <ul id="image-list">
+      <!-- <li>
+        <img
+          src="https://search1.kakaocdn.net/argon/130x130_85_c/HN2EdGRt4PN"
+        /> -->
+      </li>
+    </ul>
+    <script>
+      async function searchImage() {
+        const response = await fetch(
+          "https://dapi.kakao.com/v2/search/image?query=전지현",
+          {
+            method: "GET",
+            headers: {
+              Authorization: "KakaoAK c2b6828b16439b8dd302446432809501",
+            },
+          },
+        );
+        const data = await response.json();
+        const imageList = document.querySelector("#image-list");
+        data.documents.forEach(function(item){
+          const li = document.createElement("li");
+          const img = document.createElement("img");
+          img.src = item.thumbnail_url;
+          li.appendChild(img);
+          imageList.appendChild(li);
+        })
+        console.log(data);
+      }
+      searchImage();
+    </script>
+  </body>
+</html>
