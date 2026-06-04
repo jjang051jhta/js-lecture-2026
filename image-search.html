@@ -6,6 +6,10 @@
     <title>Document</title>
   </head>
   <body>
+    <div>
+        <input type="text" placeholder="검색할 이미지를 입력하세요" id="search-word">
+        <button id="btn-search">검색</button>
+    </div>
     <ul id="image-list">
       <!-- <li>
         <img
@@ -14,9 +18,15 @@
       </li>
     </ul>
     <script>
-      async function searchImage() {
+      const searchWord = document.querySelector("#search-word");
+      const btnSearch = document.querySelector("#btn-search");
+      btnSearch.addEventListener("click",function(){
+        searchImage(searchWord.value);
+      })
+      // '문자열(String)',"문자열(String)",`문자열(String)`
+      async function searchImage(searchWord) {
         const response = await fetch(
-          "https://dapi.kakao.com/v2/search/image?query=전지현",
+          `https://dapi.kakao.com/v2/search/image?query=${searchWord}`,
           {
             method: "GET",
             headers: {
@@ -35,7 +45,7 @@
         })
         console.log(data);
       }
-      searchImage();
+      //searchImage();
     </script>
   </body>
 </html>
