@@ -20,6 +20,13 @@
     <script>
       const searchWord = document.querySelector("#search-word");
       const btnSearch = document.querySelector("#btn-search");
+      searchWord.addEventListener("keydown",function(e){
+        //e는 이벤트 객체를 가리킨다.
+        //console.log(e.keyCode===13)
+        if(e.keyCode===13) {
+          searchImage(searchWord.value);
+        }
+      })
       btnSearch.addEventListener("click",function(){
         searchImage(searchWord.value);
       })
